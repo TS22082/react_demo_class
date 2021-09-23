@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect } from "react";
 
 function App() {
+  const requestByTitle = async (movieName) => {
+    const res = await fetch(
+      `http://www.omdbapi.com/?t=${movieName}&apikey=d3336c70`
+    );
+
+    const data = await res.json();
+    console.log(data);
+  };
+
+  const requestByID = async (id) => {
+    const res = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=d3336c70`);
+
+    console.log(`http://www.omdbapi.com/?i=${id}&apikey=d3336c70`);
+    const data = await res.json();
+    console.log("Movie Data ===>", data);
+  };
+
+  useEffect(() => {
+    requestByTitle("The Matrix");
+    requestByID("tt0133093");
+  }, []);
+
+  const me = ["Thomas", "William", "Thomas"];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <h3>Hi</h3>
+        {me.map((name, index) => (
+          <h1 key={index}>{name}</h1>
+        ))}
+      </div>
     </div>
   );
 }
