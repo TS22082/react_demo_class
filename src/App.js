@@ -45,16 +45,14 @@ function App() {
         <input onChange={(e) => onChange(e)} type="text" />
         <button>Search</button>
       </form>
-      <div>
-        <h3>Actors: {movieData?.Actors}</h3>
-        <h3>Year released: {movieData?.Released}</h3>
-        <h3>Directors: {movieData?.Director}</h3>
-        <img src={movieData?.Poster} alt="broken image" />
-      </div>
 
-      <MovieContainer color="blue">Happy camper</MovieContainer>
-      <MovieContainer color="red">Panda</MovieContainer>
-      <MovieContainer color="blue">Person</MovieContainer>
+      <MovieContainer
+        actors={movieData?.Actors}
+        year={movieData?.Released}
+        director={movieData?.Director}
+      >
+        <img src={movieData?.Poster} alt="broken" />
+      </MovieContainer>
     </div>
   );
 }
