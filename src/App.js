@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import MovieContainer from "./Components/MovieContainer/MovieContainer";
 
 function App() {
   const [movieData, setMovieData] = useState({});
@@ -14,7 +15,7 @@ function App() {
     setMovieData(data);
   };
 
-  const requestByID = async (id, cb) => {
+  const requestByID = async (id) => {
     const res = await fetch(
       `http://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_KEY}`
     );
@@ -50,6 +51,10 @@ function App() {
         <h3>Directors: {movieData?.Director}</h3>
         <img src={movieData?.Poster} alt="broken image" />
       </div>
+
+      <MovieContainer color="blue">Happy camper</MovieContainer>
+      <MovieContainer color="red">Panda</MovieContainer>
+      <MovieContainer color="blue">Person</MovieContainer>
     </div>
   );
 }
