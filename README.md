@@ -73,5 +73,9 @@ Run install script:
 Type:  
 `npm install`
 
+- create a .env file and add:
+
+`REACT_APP_KEY:<your api key>`
+
 - Run application:  
   `npm start`
