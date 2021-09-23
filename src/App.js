@@ -1,39 +1,36 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [movieData, setMovieData] = useState();
+
   const requestByTitle = async (movieName) => {
     const res = await fetch(
       `http://www.omdbapi.com/?t=${movieName}&apikey=${process.env.REACT_APP_KEY}`
     );
 
     const data = await res.json();
-    console.log(data);
+    setMovieData(data);
   };
 
-  const requestByID = async (id) => {
+  const requestByID = async (id, cb) => {
     const res = await fetch(
       `http://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_KEY}`
     );
-
     const data = await res.json();
-    console.log("Movie Data ===>", data);
   };
 
   useEffect(() => {
     requestByTitle("The Matrix");
-    requestByID("tt0133093");
   }, []);
-
-  const me = ["Thomas", "William", "Thomas"];
 
   return (
     <div className="App">
       <div>
-        <h3>Hi</h3>
-        {me.map((name, index) => (
-          <h1 key={index}>{name}</h1>
-        ))}
+        <h3>Actors: {movieData?.Actors}</h3>
+        <h3>Year released: {movieData?.Released}</h3>
+        <h3>Directors: {movieData?.Director}</h3>
+        <img src={movieData.Poster} alt="broken image" />
       </div>
     </div>
   );
