@@ -4,7 +4,7 @@ import { useEffect } from "react";
 function App() {
   const requestByTitle = async (movieName) => {
     const res = await fetch(
-      `http://www.omdbapi.com/?t=${movieName}&apikey=d3336c70`
+      `http://www.omdbapi.com/?t=${movieName}&apikey=${process.env.REACT_APP_KEY}`
     );
 
     const data = await res.json();
@@ -12,9 +12,10 @@ function App() {
   };
 
   const requestByID = async (id) => {
-    const res = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=d3336c70`);
+    const res = await fetch(
+      `http://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_KEY}`
+    );
 
-    console.log(`http://www.omdbapi.com/?i=${id}&apikey=d3336c70`);
     const data = await res.json();
     console.log("Movie Data ===>", data);
   };
