@@ -1,10 +1,12 @@
+import { useState } from "react";
 import "./App.css";
-import NameList from "./Components/NameList/NameList";
+import Counter from "./Components/Counter/Counter";
 
 function App() {
+  const [state, setState] = useState("Thomas");
   return (
     <div className="App">
-      <NameList />
+      <Counter />
     </div>
   );
 }
