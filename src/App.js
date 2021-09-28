@@ -54,7 +54,7 @@ function App() {
 
       <MovieContainer color="blue">Happy camper</MovieContainer>
       <MovieContainer color="red">Panda</MovieContainer>
-      <MovieContainer color="blue">Person</MovieContainer>
+      <MovieContainer color="red">Person</MovieContainer>
     </div>
   );
 }
